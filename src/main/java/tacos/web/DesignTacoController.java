@@ -1,4 +1,4 @@
-// tag::head[]
+
 package tacos.web;
 
 import java.util.Arrays;
@@ -25,8 +25,6 @@ import tacos.Taco;
 @RequestMapping("/design")
 public class DesignTacoController {
 
-//end::head[]
-
 @ModelAttribute
 public void addIngredientsToModel(Model model) {
 	List<Ingredient> ingredients = Arrays.asList(
@@ -48,17 +46,13 @@ public void addIngredientsToModel(Model model) {
 	      filterByType(ingredients, type));
 	}
 }
-	
-//tag::showDesignForm[]
+
   @GetMapping
   public String showDesignForm(Model model) {
     model.addAttribute("design", new Taco());
     return "design";
   }
 
-//end::showDesignForm[]
-
-//tag::processDesign[]
   @PostMapping
   public String processDesign() { //Design design parem
     // Save the taco design...
@@ -68,9 +62,6 @@ public void addIngredientsToModel(Model model) {
     return "redirect:/orders/current";
   }
 
-//end::processDesign[]
-
-//tag::processDesignValidated[]
 //  @PostMapping
 //  public String processDesign(@Valid @ModelAttribute("design") Taco design, Errors errors, Model model) {
 //    if (errors.hasErrors()) {
@@ -84,9 +75,7 @@ public void addIngredientsToModel(Model model) {
 //    return "redirect:/orders/current";
 //  }
 
-//end::processDesignValidated[]
 
-//tag::filterByType[]
   private List<Ingredient> filterByType(
       List<Ingredient> ingredients, Type type) {
     return ingredients
@@ -95,7 +84,4 @@ public void addIngredientsToModel(Model model) {
               .collect(Collectors.toList());
   }
 
-//end::filterByType[]
-// tag::foot[]
 }
-// end::foot[]
